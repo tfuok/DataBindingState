@@ -1,0 +1,38 @@
+@page "/change-color"
+
+<div class="container mt-4">
+    <h2>Change car color</h2>
+    <div class="row d-flex align-items-center">
+        <div class="col-md-6">
+            <div class="card border-0">
+                <img src="@carImage" alt="Car">
+            </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-start gap-2">
+            <button class="btn btn-danger px-4 py-2" @onclick="() => ChangeCar(1)">Red color</button>
+            <button class="btn btn-secondary px-4 py-2" @onclick="() => ChangeCar(2)">Silver color</button>
+            <button class="btn btn-dark px-4 py-2" @onclick="() => ChangeCar(3)">Black color</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string carImage = "/products/black-car.jpg";
+
+    public void ChangeCar(int color)
+    {
+        switch (color)
+        {
+            case 1:
+                carImage = "/products/red-car.jpg";
+                break;
+            case 2:
+                carImage = "/products/silver-car.jpg";
+                break;
+            case 3:
+                carImage = "/products/black-car.jpg";
+                break;
+        }
+        StateHasChanged(); 
+    }
+}
